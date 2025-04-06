@@ -644,6 +644,168 @@ function stringToArray(str1: string): string[] | 'Error' {
 }
 console.log(stringToArray('Ревуть воли як ясла повні'));
 
+//======================================================
+
+let arrForLesson6: number[] = [10,8,-7,55,987,-1011,0,1050,0];
+
+let mappedArrForLesson6: string[] = arrForLesson6.map(value => {
+    return value.toString();
+})
+
+console.log(mappedArrForLesson6);
+
+//==========================================
+
+ function sortNums(array: number[], direction: string): number[] | undefined {
+     if (direction === 'ascending') {
+         return nums.sort((num1: number, num2: number): number => num1 - num2);
+     }
+     if (direction === 'descending') {
+         return nums.sort((num1: number, num2: number): number => num2 - num1);
+     }
+ }
+let nums: number[] = [11, 21, 3, 12, 35, 23, 33];
+console.log(sortNums(nums, 'descending'));
+
+//=======================================
+
+let coursesAndDurationArray6: CoursesDurationType[] = [
+    {title: 'JavaScript Complex', monthDuration: 5},
+    {title: 'Java Complex', monthDuration: 6},
+    {title: 'Python Complex', monthDuration: 6},
+    {title: 'QA Complex', monthDuration: 4},
+    {title: 'FullStack', monthDuration: 7},
+    {title: 'Frontend', monthDuration: 4}
+];
+
+type MappedArray6Type = {
+    id: number,
+    title: string,
+    monthDuration: number,
+}
+
+let mappedArray6: MappedArray6Type[] =
+    coursesAndDurationArray6.sort((a: CoursesDurationType, b: CoursesDurationType): number => b.monthDuration - a.monthDuration)
+        .filter(value => value.monthDuration > 5)
+        .map((value: CoursesDurationType, index: number): MappedArray6Type => {
+            return {
+                id: index + 1,
+                title: value.title,
+                monthDuration: value.monthDuration
+            }
+        });
+console.log(mappedArray6);
+
+//================================================
+
+type CardType = {
+    cardSuit: string,
+    cardValue: string,
+    color: string,
+}
+
+let arrCard: CardType[] = [];
+
+let suits: string[] = ['spade', 'diamond','heart', 'clubs'];
+let values: string[] = ['6', '7', '8', '9', '10', 'ace','jack','queen','king']
+
+for (const suit of suits) {
+    for (const value of values) {
+        let card: CardType = {cardSuit: suit, cardValue: value, color: ''};
+        if (suit === 'heart' || suit === 'diamond') {
+            card.color = 'red'
+        } else {
+            card.color = 'black'
+        }
+        arrCard.push(card);
+    }
+}
+console.log(arrCard);
+console.log(arrCard.find(card => card.cardValue === 'ace' && card.cardSuit === 'spade'));
+console.log(arrCard.filter(card => card.cardValue === '6'));
+console.log(arrCard.filter(card => card.color === 'red'));
+console.log(arrCard.filter(card => card.cardSuit === 'diamond'));
+console.log(arrCard.filter(card => card.cardSuit === 'clubs' && card.cardValue !== '6' && card.cardValue !== '7' && card.cardValue !== '8' && card.cardValue !== '9'));
+
+//===================================
+
+type ReduceCardType = {
+    spades: CardType[],
+    diamonds: CardType[],
+    hearts: CardType[],
+    clubs: CardType[],
+}
+
+let reduce: ReduceCardType = arrCard.reduce((accum: ReduceCardType, card: CardType): ReduceCardType => {
+    if (card.cardSuit === 'spade') {
+        accum.spades.push(card);
+    } else if (card.cardSuit === 'diamond') {
+        accum.diamonds.push(card);
+    } else if (card.cardSuit === 'heart') {
+        accum.hearts.push(card);
+    } else if (card.cardSuit === 'clubs') {
+        accum.clubs.push(card);
+    }
+    return accum;
+}, {spades: [], diamonds: [], hearts: [], clubs: [] });
+
+console.log(reduce);
+
+//==============================================================
+
+type CoursesArrayType = {
+    title: string,
+    monthDuration: number,
+    hourDuration: number,
+    modules: string[],
+}
+
+let coursesArray: CoursesArrayType[] = [
+    {
+        title: 'JavaScript Complex',
+        monthDuration: 5,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'node.js']
+    },
+    {
+        title: 'Java Complex',
+        monthDuration: 6,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'angular', 'aws', 'docker', 'git', 'java core', 'java advanced']
+    },
+    {
+        title: 'Python Complex',
+        monthDuration: 6,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'angular', 'aws', 'docker', 'python core', 'python advanced']
+    },
+    {
+        title: 'QA Complex',
+        monthDuration: 4,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'git', 'QA/QC']
+    },
+    {
+        title: 'FullStack',
+        monthDuration: 7,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'node.js', 'python', 'java']
+    },
+    {
+        title: 'Frontend',
+        monthDuration: 4,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'sass']
+    }
+];
+
+console.log(coursesArray.filter((value: CoursesArrayType): boolean => {
+    return value.modules.includes('sass');
+}));
+
+console.log(coursesArray.filter((value: CoursesArrayType): boolean => {
+    return value.modules.includes('docker');
+}));
 
 
 
