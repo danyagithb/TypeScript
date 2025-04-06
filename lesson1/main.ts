@@ -280,6 +280,7 @@ if (!xForLesson2) {
 type CoursesDurationType = {
     title: string,
     monthDuration: number,
+    id?: number,
 }
 
 let coursesAndDurationArray: CoursesDurationType[] = [
@@ -807,7 +808,287 @@ console.log(coursesArray.filter((value: CoursesArrayType): boolean => {
     return value.modules.includes('docker');
 }));
 
+//=======================================
+
+            // LESSON7
+type UserConstType = {
+    id: number;
+    name: string;
+    surname: string;
+    email: string;
+    phone: string;
+}
+
+class User {
+    id: number;
+    name: string;
+    surname: string;
+    email: string;
+    phone: string;
+
+    constructor({id, name, surname, email, phone}: UserConstType) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.phone = phone;
+    }
+}
+
+let user1: User = new User({
+    id: 7,
+    name: 'kashtan',
+    surname: 'kala',
+    email: '2142@gmail',
+    phone: '124326682',
+});
+let user2: User = new User({
+    id: 7,
+    name: 'kashtan',
+    surname: 'kala',
+    email: '2142@gmail',
+    phone: '124326682',
+});
+let user3: User = new User({
+    id: 7,
+    name: 'kashtan',
+    surname: 'kala',
+    email: '2142@gmail',
+    phone: '124326682',
+});
+let user4: User = new User({
+    id: 7,
+    name: 'kashtan',
+    surname: 'kala',
+    email: '2142@gmail',
+    phone: '124326682',
+});
 
 
+let arrayOfUsers: User[] = [user1, user2, user3, user4];
 
+//==================================
+
+let filterArray: User[] = arrayOfUsers.filter(function(value: User): User | undefined {
+    if (value.id % 2 === 0) {
+        return value;
+    }
+})
+
+//==================================
+
+let sortArray: User[] = arrayOfUsers.sort((a: User, b: User): number => a.id - b.id)
+
+//=======================
+
+interface IOrder {
+    title: string;
+    price: string;
+}
+
+interface iClient {
+    id: number;
+    name: string;
+    surname: string;
+    email: string;
+    phone: string;
+    order: IOrder[];
+}
+
+class Client {
+    id: number;
+    name: string;
+    surname: string;
+    email: string;
+    phone: string;
+    order: IOrder[];
+
+    constructor({id, name, surname, email, phone, order}: iClient) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.phone = phone;
+        this.order = order;
+    }
+}
+
+let client1: Client = new Client({
+    id: 1,
+    name: 'kola',
+    surname: 'vava',
+    email: '6hsdg783r@gmail.com',
+    phone: '+348994875',
+    order: [
+        {title: 'apple', price: '10'},
+        {title: 'cucumber', price: '20'},
+        {title: 'iphone', price: '30'},
+        {title: 'cucumber', price: '20'}
+    ]
+});
+let client2: Client = new Client({
+    id: 1,
+    name: 'kola',
+    surname: 'vava',
+    email: '6hsdg783r@gmail.com',
+    phone: '+348994875',
+    order: [
+        {title: 'apple', price: '10'},
+        {title: 'cucumber', price: '20'},
+        {title: 'iphone', price: '30'},
+        {title: 'cucumber', price: '20'}
+    ]
+});
+let client3: Client = new Client({
+    id: 1,
+    name: 'kola',
+    surname: 'vava',
+    email: '6hsdg783r@gmail.com',
+    phone: '+348994875',
+    order: [
+        {title: 'apple', price: '10'},
+    ]
+});
+
+let arrayOfClient: Client[] = [client1, client2, client3];
+
+//================================
+let sortClient: Client[] = arrayOfClient.sort((a: Client, b: Client): number => a.order.length - b.order.length);
+
+//===================================================
+
+type DriverType = {
+    name: string,
+    age: number
+}
+
+class Car {
+    model: string;
+    creator: string;
+    year: number;
+    maxSpeed: number;
+    motor: string;
+    driver?: DriverType;
+
+    constructor(model: string, creator: string, year: number, maxSpeed: number, motor: string) {
+        this.model = model;
+        this.creator = creator;
+        this.year = year;
+        this.maxSpeed = maxSpeed;
+        this.motor = motor;
+    };
+
+    drive(): void {
+        console.log(`їдемо зі швидкістю ${this.maxSpeed} на годину`);
+    };
+    info(): void {
+        for (const item in this) {
+            console.log(item, this[item]);
+        }
+    };
+    increaseMaxSpeed(newSpeed: number): void {
+         this.maxSpeed = this.maxSpeed + newSpeed;
+    };
+    changeYear(newYear: number): void {
+         this.year = newYear;
+    };
+    addDriver(driver: DriverType): void {
+        this.driver = driver;
+    }
+
+}
+
+//=======================================
+
+class Popel {
+    name: string;
+    age: number;
+    size: number;
+
+    constructor (name: string, age: number, size: number) {
+        this.name = name;
+        this.age = age;
+        this.size = size;
+    }
+}
+
+let popel1: Popel = new Popel('Karolina', 19, 35);
+let popel2: Popel = new Popel('Tina', 23, 37);
+let arrayPopel = [popel1, popel2];
+
+class Prince {
+    name: string;
+    age: number;
+    requiredSize: number;
+
+    constructor (name: string, age: number, requiredSize: number) {
+        this.name = name;
+        this.age = age;
+        this.requiredSize = requiredSize;
+    }
+}
+let prince: Prince = new Prince('Denis', 29, 37);
+
+for (const popel of arrayPopel) {
+    if (popel.size === prince.requiredSize) {
+        console.log(popel);
+    }
+}
+
+let find: Popel | undefined = arrayPopel.find((girl: Popel): boolean => girl.size === prince.requiredSize);
+console.log(find);
+
+//=============================
+
+            // LESSON8
+
+interface IObj {
+    name: string;
+    age: number;
+    foon: () => void;
+    foon1: () => void;
+}
+
+function objCopy(obj: IObj): IObj {
+    if (obj) {
+        let functionsObjCopy: { functionCopy: () => void; item: keyof IObj }[] = [];
+        for (let item in obj) {
+            if (typeof obj[item as keyof IObj] === 'function') { // Приведение типа
+                let functionCopy = (obj[item as keyof IObj] as Function).bind(obj);
+                functionsObjCopy.push({ functionCopy, item: item as keyof IObj });
+            }
+        }
+
+        let parseObj: IObj = JSON.parse(JSON.stringify(obj)) as IObj;
+        for (const func of functionsObjCopy) {
+            (parseObj[func.item] as unknown as () => void) = func.functionCopy;
+        }
+        return parseObj;
+    }
+
+    throw new Error('error')
+}
+
+console.log(objCopy({
+    name: 'danya',
+    age: 18,
+    foon(): void {
+        console.log('hello');
+    },
+    foon1(): void {
+        console.log('bye');
+    },
+}));
+
+//================================================
+
+let coursesAndDurationArray71: CoursesDurationType[] = [
+    {title: 'JavaScript Complex', monthDuration: 5},
+    {title: 'Java Complex', monthDuration: 6},
+    {title: 'Python Complex', monthDuration: 6},
+    {title: 'QA Complex', monthDuration: 4},
+    {title: 'FullStack', monthDuration: 7},
+    {title: 'Frontend', monthDuration: 4}
+];
+console.log( coursesAndDurationArray71.map((value: CoursesDurationType, index: number): CoursesDurationType => ({...value, id: index + 1})) );
 

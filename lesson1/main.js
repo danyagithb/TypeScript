@@ -606,3 +606,192 @@ console.log(coursesArray.filter((value) => {
 console.log(coursesArray.filter((value) => {
     return value.modules.includes('docker');
 }));
+class User {
+    constructor({ id, name, surname, email, phone }) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.phone = phone;
+    }
+}
+let user1 = new User({
+    id: 7,
+    name: 'kashtan',
+    surname: 'kala',
+    email: '2142@gmail',
+    phone: '124326682',
+});
+let user2 = new User({
+    id: 7,
+    name: 'kashtan',
+    surname: 'kala',
+    email: '2142@gmail',
+    phone: '124326682',
+});
+let user3 = new User({
+    id: 7,
+    name: 'kashtan',
+    surname: 'kala',
+    email: '2142@gmail',
+    phone: '124326682',
+});
+let user4 = new User({
+    id: 7,
+    name: 'kashtan',
+    surname: 'kala',
+    email: '2142@gmail',
+    phone: '124326682',
+});
+let arrayOfUsers = [user1, user2, user3, user4];
+//==================================
+let filterArray = arrayOfUsers.filter(function (value) {
+    if (value.id % 2 === 0) {
+        return value;
+    }
+});
+//==================================
+let sortArray = arrayOfUsers.sort((a, b) => a.id - b.id);
+class Client {
+    constructor({ id, name, surname, email, phone, order }) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.phone = phone;
+        this.order = order;
+    }
+}
+let client1 = new Client({
+    id: 1,
+    name: 'kola',
+    surname: 'vava',
+    email: '6hsdg783r@gmail.com',
+    phone: '+348994875',
+    order: [
+        { title: 'apple', price: '10' },
+        { title: 'cucumber', price: '20' },
+        { title: 'iphone', price: '30' },
+        { title: 'cucumber', price: '20' }
+    ]
+});
+let client2 = new Client({
+    id: 1,
+    name: 'kola',
+    surname: 'vava',
+    email: '6hsdg783r@gmail.com',
+    phone: '+348994875',
+    order: [
+        { title: 'apple', price: '10' },
+        { title: 'cucumber', price: '20' },
+        { title: 'iphone', price: '30' },
+        { title: 'cucumber', price: '20' }
+    ]
+});
+let client3 = new Client({
+    id: 1,
+    name: 'kola',
+    surname: 'vava',
+    email: '6hsdg783r@gmail.com',
+    phone: '+348994875',
+    order: [
+        { title: 'apple', price: '10' },
+    ]
+});
+let arrayOfClient = [client1, client2, client3];
+//================================
+let sortClient = arrayOfClient.sort((a, b) => a.order.length - b.order.length);
+class Car {
+    constructor(model, creator, year, maxSpeed, motor) {
+        this.model = model;
+        this.creator = creator;
+        this.year = year;
+        this.maxSpeed = maxSpeed;
+        this.motor = motor;
+    }
+    ;
+    drive() {
+        console.log(`їдемо зі швидкістю ${this.maxSpeed} на годину`);
+    }
+    ;
+    info() {
+        for (const item in this) {
+            console.log(item, this[item]);
+        }
+    }
+    ;
+    increaseMaxSpeed(newSpeed) {
+        this.maxSpeed = this.maxSpeed + newSpeed;
+    }
+    ;
+    changeYear(newYear) {
+        this.year = newYear;
+    }
+    ;
+    addDriver(driver) {
+        this.driver = driver;
+    }
+}
+//=======================================
+class Popel {
+    constructor(name, age, size) {
+        this.name = name;
+        this.age = age;
+        this.size = size;
+    }
+}
+let popel1 = new Popel('Karolina', 19, 35);
+let popel2 = new Popel('Tina', 23, 37);
+let arrayPopel = [popel1, popel2];
+class Prince {
+    constructor(name, age, requiredSize) {
+        this.name = name;
+        this.age = age;
+        this.requiredSize = requiredSize;
+    }
+}
+let prince = new Prince('Denis', 29, 37);
+for (const popel of arrayPopel) {
+    if (popel.size === prince.requiredSize) {
+        console.log(popel);
+    }
+}
+let find = arrayPopel.find((girl) => girl.size === prince.requiredSize);
+console.log(find);
+function objCopy(obj) {
+    if (obj) {
+        let functionsObjCopy = [];
+        for (let item in obj) {
+            if (typeof obj[item] === 'function') { // Приведение типа
+                let functionCopy = obj[item].bind(obj);
+                functionsObjCopy.push({ functionCopy, item: item });
+            }
+        }
+        let parseObj = JSON.parse(JSON.stringify(obj));
+        for (const func of functionsObjCopy) {
+            parseObj[func.item] = func.functionCopy;
+        }
+        return parseObj;
+    }
+    throw new Error('error');
+}
+console.log(objCopy({
+    name: 'danya',
+    age: 18,
+    foon() {
+        console.log('hello');
+    },
+    foon1() {
+        console.log('bye');
+    },
+}));
+//================================================
+let coursesAndDurationArray71 = [
+    { title: 'JavaScript Complex', monthDuration: 5 },
+    { title: 'Java Complex', monthDuration: 6 },
+    { title: 'Python Complex', monthDuration: 6 },
+    { title: 'QA Complex', monthDuration: 4 },
+    { title: 'FullStack', monthDuration: 7 },
+    { title: 'Frontend', monthDuration: 4 }
+];
+console.log(coursesAndDurationArray71.map((value, index) => ({ ...value, id: index + 1 })));
