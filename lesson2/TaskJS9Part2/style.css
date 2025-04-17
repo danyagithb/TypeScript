@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+}
+
+.container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.header {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    background-color: bisque;
+
+    border-radius: 10px;
+    border: 2px solid #fac381;
+}
+
+.title {
+    font-size: 25px;
+    font-family: "Poppins", sans-serif;
+}
+
+.duration {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0;
+
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+}
+
+.month-duration, .hour-duration {
+    padding: 10px 50px;
+    border-radius: 6px;
+}
+
+.month-duration {
+    width: 40%;
+    background-color: #a1f8a1;
+    border: 2px solid #62f419;
+}
+
+.hour-duration {
+    width: 50%;
+    background-color: #d1f8a1;
+    border: 2px solid #abf419;
+}
+
+.modules {
+    width: 100%;
+    background-color: #e3b3ff;
+    border: 2px solid #c359f8;
+    border-radius: 10px;
+    padding-block: 15px;
+    padding-left: 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+    justify-content: center;
+}
+
+.modules-item {
+    font-size: 16px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
+
+    position: relative;
+}
+
+.modules-item::before {
+    content: '';
+    display: block;
+    width: 7px;
+    height: 7px;
+    background-color: #390b51;
+    border-radius: 50%;
+
+    position: absolute;
+    top: 6px;
+    left: -15px;
+}
+
+
+
+
+
+
+
+
