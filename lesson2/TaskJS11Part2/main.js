@@ -13,7 +13,7 @@ fetch('https://dummyjson.com/recipes')
                 Cook Time Minutes - ${recipe.cookTimeMinutes}
                 Servings - ${recipe.servings}
                 Cuisine - ${recipe.cuisine}
-                Calories Per Serving - ${recipe.prepTimeMinutes}
+                Calories Per Serving - ${recipe.caloriesPerServing}
                 Tag - ${recipe.tags[0]}, ${recipe.tags[1]}
                 User Id - ${recipe.userId}
                 Rating - ${recipe.rating}
